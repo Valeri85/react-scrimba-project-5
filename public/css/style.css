@@ -1,0 +1,239 @@
+:root {
+	--color-bg-body: rgba(229, 229, 229, 1);
+	--color-bg-linear-1: rgba(103, 34, 128, 1);
+	--color-bg-linear-2: rgba(166, 38, 211, 1);
+	--color-bg-gradient: linear-gradient(90deg, var(--color-bg-linear-1), var(--color-bg-linear-2));
+	--color-bg-main: rgba(255, 255, 255, 1);
+
+	--color-border: rgba(213, 212, 216, 1);
+
+	--color-font-primary: rgba(255, 255, 255, 1);
+	--color-font-input: rgba(13, 13, 13, 1);
+
+	--text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000,
+		-2px 0 0 #000, 2px 2px 5px #000;
+
+	--font-weight-400: 400;
+	--font-weight-500: 500;
+	--font-weight-700: 700;
+	--font-weight-900: 900;
+
+	--font-family-primary: 'Karla', sans-serif;
+	--font-family-title: 'Inter', sans-serif;
+	--font-family-meme: 'Impact', sans-serif;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Set core root defaults */
+html {
+	font-family: var(--font-family-primary);
+	font-weight: var(--font-weight-400);
+	font-size: 62.5%;
+	/*
+    1rem = 16px
+    1rem * 62.5% = 10px
+    If all font sizes = 62.5% than rem * 0.625
+    1rem = 10px; 0.1rem = 1px; 2.4rem = 24px...      
+    */
+	color: var(--color-font-primary);
+	scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+	width: 100%;
+	min-height: 100vh;
+	font-size: 1.4rem;
+	line-height: 1.6;
+	text-rendering: optimizeSpeed;
+}
+
+/* Remove default margin and paddings */
+body,
+h1,
+h2,
+h3,
+p,
+figure {
+	margin: 0;
+	padding: 0;
+}
+
+/* Make images easier to work with */
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+	html:focus-within {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* karla-regular - latin */
+@font-face {
+	font-family: 'Karla';
+	font-display: swap;
+	font-style: normal;
+	font-weight: 400;
+	src: local(''), url('../assets/fonts/karla-v21-latin-regular.woff2') format('woff2'),
+		url('../assets/fonts/karla-v21-latin-regular.woff') format('woff');
+}
+
+/* inter-500 - latin */
+@font-face {
+	font-family: 'Inter';
+	font-display: swap;
+	font-style: normal;
+	font-weight: 500;
+	src: local(''), url('../assets/fonts/inter-v8-latin-500.woff2') format('woff2'),
+		url('../assets/fonts/inter-v8-latin-500.woff') format('woff');
+}
+
+/* karla-700 - latin */
+@font-face {
+	font-family: 'Karla';
+	font-display: swap;
+	font-style: normal;
+	font-weight: 700;
+	src: local(''), url('../assets/fonts/karla-v21-latin-700.woff2') format('woff2'),
+		url('../assets/fonts/karla-v21-latin-700.woff') format('woff');
+}
+
+/* impact-900 */
+@font-face {
+	font-family: 'Impact';
+	font-display: swap;
+	font-style: normal;
+	font-weight: 900;
+	src: local(''), url('../assets/fonts/impact.woff2') format('woff2'), url('../assets/fonts/impact.woff') format('woff');
+}
+
+body {
+	display: grid;
+	place-items: center;
+	padding: 2em;
+	background-color: var(--color-bg-body);
+}
+
+#root {
+	min-width: 52.5em;
+	max-width: 52.5em;
+	min-height: 100vh;
+}
+
+/* Header */
+.header {
+	display: flex;
+	align-items: center;
+	padding: 1.5em 3em 1.5em 1.5em;
+	background-image: var(--color-bg-gradient);
+}
+
+.header__h1 {
+	font-size: 2.4rem;
+	font-weight: var(--font-weight-700);
+	margin-left: 0.35em;
+	letter-spacing: -0.1em;
+}
+
+.header__h2 {
+	margin-left: auto;
+	font-family: var(--font-family-title);
+	font-size: inherit;
+	font-weight: var(--font-weight-500);
+}
+
+/* Main */
+.main {
+	padding: 4em 4em 5em 4em;
+	background-color: var(--color-bg-main);
+}
+
+.main__form {
+	display: grid;
+	grid:
+		'input-1 input-2'
+		'button button'
+		/ calc(50% - (1.5em / 2)) calc(50% - (1.5em / 2));
+	gap: 1.5em;
+}
+
+.main__form-input {
+	padding: 1em;
+	border: 0.15em solid var(--color-border);
+	border-radius: 0.5em;
+	font-family: inherit;
+}
+
+::placeholder {
+	color: var(--color-font-input);
+}
+
+.main__form-button {
+	grid-area: button;
+	display: flex;
+	place-items: center;
+	cursor: pointer;
+}
+
+.main__form-button {
+	display: grid;
+	place-content: center;
+	width: 100%;
+	padding: 1em;
+	background-image: var(--color-bg-gradient);
+	border: 0;
+	border-radius: 0.5em;
+	font-family: inherit;
+	font-size: 1.9rem;
+	font-weight: var(--font-weight-700);
+	color: inherit;
+	letter-spacing: -0.075em;
+}
+
+.main__form-meme {
+	position: relative;
+	width: 40em;
+	margin: 1em auto auto;
+}
+
+.main__form--meme-image {
+	margin: auto;
+}
+
+.main__form-memme-text {
+	position: absolute;
+	font-size: 5rem;
+	font-weight: var(--font-weight-900);
+	line-height: normal;
+	text-transform: uppercase;
+	text-shadow: var(--text-shadow);
+	transform: translateX(-50%);
+}
+
+.main__form-memme-text--top {
+	inset: 0.25em auto auto 50%;
+}
+
+.main__form-memme-text--bottom {
+	inset: auto auto 0.25em 50%;
+}
